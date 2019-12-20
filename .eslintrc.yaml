@@ -30,6 +30,8 @@ rules:
     - builtinGlobals: true
   no-shadow-restricted-names: 2
   no-unexpected-multiline: 2
+  no-console: warn
+  no-undef: warn
   strict:
     - 2
     - global
