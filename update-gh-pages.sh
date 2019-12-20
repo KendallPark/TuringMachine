@@ -22,7 +22,7 @@ function restore() { rm -r ./gh-pages; git checkout -f "$PREV_BRANCH"; }
 trap restore EXIT
 
 # Generate and copy over
-npm run prod
+yarn run prod
 cp index.html CNAME gh-pages/
 cp -r build gh-pages/
 
