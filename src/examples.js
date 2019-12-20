@@ -9,21 +9,8 @@ function requireExample(name) {
 }
 
 var examplePairs = [
-  'repeat01',
-  'binaryIncrement',
-  'divisibleBy3',
-  'copy1s',
-  'divisibleBy3Base10',
-  'matchThreeLengths',
-  'matchBinaryStrings',
-  'palindrome',
-  'busyBeaver3',
-  'busyBeaver4',
-  'powersOfTwo',
-  'lengthMult',
-  'binaryAdd',
-  'unaryMult',
-  'binaryMult'
+  'MachineA',
+  'MachineB'
 ].map(function (id) {
   // parse each string into a document
   var doc = parseDocument(requireExample(id));

@@ -1,0 +1,15 @@
+name: Machine A (binary counter)
+source code: |
+  input: '1'
+  blank: '0'
+  start state: q0
+  table:
+    q0:
+      '0': {write: 0, R}
+      '1': {write: 1, L: q1}
+    q1:
+      '0': {write: 1, R: q0}
+      '1': {write: 0, L}
+positions:
+  q0: {x: 300, y: 250}
+  q1: {x: 500, y: 250}

@@ -1,0 +1,264 @@
+name: Machine B (Universal Turing Machine)
+source code: |
+  input: '0000M000Y01X00001X01110X10011X11100Y0'
+  blank: '0'
+  start state: q1
+  start index: 11
+  table:
+    q1:
+      '0': {write: A, L}
+      '1': {write: B, L}
+      'Y': {R: q2}
+      # default
+      'A': L
+      'B': L
+      'X': L
+      'M': L
+      'S': L
+    q2:
+      'A': {write: 0, R: q3}
+      'B': {write: 1, R: q4}
+      'X': {R: q7}
+      # default
+      '0': R
+      '1': R
+      'Y': R
+      'M': R
+      'S': R
+    q3:
+      '0': {write: A, L: q5}
+      '1': {write: B, R: q6}
+      # default
+      'A': R
+      'B': R
+      'X': R
+      'Y': R
+      'M': R
+      'S': R
+    q4:
+      '0': {write: A, R: q6}
+      '1': {write: B, L: q5}
+      # default
+      'A': R
+      'B': R
+      'X': R
+      'Y': R
+      'M': R
+      'S': R
+    q5:
+      'Y': {R: q2}
+      # default
+      '0': L
+      '1': L
+      'A': L
+      'B': L
+      'X': L
+      'M': L
+      'S': L
+    q6:
+      'Y': {R: halt}
+      'X': {L: q1}
+      # default
+      '0': R
+      '1': R
+      'A': R
+      'B': R
+      'M': R
+      'S': R
+    q7:
+      '0': {write: A, L: q9}
+      '1': {write: B, L: q8}
+      # default
+      'A': R
+      'B': R
+      'X': R
+      'Y': R
+      'M': R
+      'S': R
+    q8:
+      'Y': {R: q10}
+      # default
+      '0': L
+      '1': L
+      'A': L
+      'B': L
+      'X': L
+      'M': L
+      'S': L
+    q9:
+      'Y': {R: q11}
+      # default
+      '0': L
+      '1': L
+      'A': L
+      'B': L
+      'X': L
+      'M': L
+      'S': L
+    q10:
+      '0': {write: B, R: q12}
+      '1': {write: B, R: q12}
+      'X': {L: q14}
+      # default
+      'A': R
+      'B': R
+      'Y': R
+      'M': R
+      'S': R
+    q11:
+      '0': {write: A, R: q12}
+      '1': {write: A, R: q12}
+      'X': {L: q13}
+      # default
+      'A': R
+      'B': R
+      'Y': R
+      'M': R
+      'S': R
+    q12:
+      'X': {R: q7}
+      # default
+      '0': R
+      '1': R
+      'A': R
+      'B': R
+      'Y': R
+      'M': R
+      'S': R
+    q13:
+      'M': {write: A, R: q15}
+      # default
+      '0': L
+      '1': L
+      'A': L
+      'B': L
+      'X': L
+      'Y': L
+      'S': L
+    q14:
+      'M': {write: B, R: q15}
+      # default
+      '0': L
+      '1': L
+      'A': L
+      'B': L
+      'X': L
+      'Y': L
+      'S': L
+    q15:
+      'A': {write: 0, R}
+      'B': {write: 1, R}
+      'X': {R: q16}
+      # default
+      '0': R
+      '1': R
+      'Y': R
+      'M': R
+      'S': R
+    q16:
+      '0': {L: q17}
+      '1': {L: q17}
+      # default
+      'A': R
+      'B': R
+      'X': R
+      'Y': R
+      'M': R
+      'S': R
+    q17:
+      'A': {write: 0, L}
+      'B': {write: 1, L}
+      '0': {write: S, L: q18}
+      '1': {write: S, L: q19}
+      # default
+      'X': L
+      'Y': L
+      'M': L
+      'S': L
+    q18:
+      'A': {write: 0, L: q21}
+      'B': {write: 0, R: q20}
+      # default
+      '0': L
+      '1': L
+      'X': L
+      'Y': L
+      'M': L
+      'S': L
+    q19:
+      'A': {write: 1, L: q21}
+      'B': {write: 1, R: q20}
+      # default
+      '0': L
+      '1': L
+      'X': L
+      'Y': L
+      'M': L
+      'S': L
+    q20:
+      '0': {write: M, R: q22}
+      '1': {write: M, R: q23}
+      # default
+      'A': R
+      'B': R
+      'X': R
+      'Y': R
+      'M': R
+      'S': R
+    q21:
+      '0': {write: M, R: q22}
+      '1': {write: M, R: q23}
+      # default
+      'A': L
+      'B': L
+      'X': L
+      'Y': L
+      'M': L
+      'S': L
+    q22:
+      'S': {write: A, L: q1}
+      # default
+      '0': R
+      '1': R
+      'A': R
+      'B': R
+      'X': R
+      'Y': R
+      'M': R
+    q23:
+      'S': {write: B, L: q1}
+      # default
+      '0': R
+      '1': R
+      'A': R
+      'B': R
+      'X': R
+      'Y': R
+      'M': R
+    halt:
+
+positions:
+  q1: {x: 280, y: 140}
+  q2: {x: 160, y: 400}
+  q3: {x: 60, y: 300}
+  q4: {x: 260, y: 300}
+  q5: {x: 160, y: 240}
+  q6: {x: 160, y: 140}
+  q7: {x: 260, y: 400}
+  q8: {x: 360, y: 480}
+  q9: {x: 360, y: 320}
+  q10: {x: 460, y: 480}
+  q11: {x: 460, y: 320}
+  q12: {x: 540, y: 400}
+  q13: {x: 620, y: 320}
+  q14: {x: 620, y: 480}
+  q15: {x: 660, y: 400}
+  q16: {x: 710, y: 260}
+  q17: {x: 660, y: 140}
+  q18: {x: 560, y: 220}
+  q19: {x: 560, y: 65}
+  q20: {x: 460, y: 220}
+  q21: {x: 460, y: 65}
+  q22: {x: 360, y: 220}
+  q23: {x: 360, y: 65}
+  halt: {x: 160, y: 40}
