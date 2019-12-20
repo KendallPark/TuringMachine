@@ -269,9 +269,26 @@ function StateViz(container, nodes, linkArray) {
         .attr({'class': 'edgepath',
                'id': 'edgepath'+edgeIndex })
         .each(function (d) { d.domNode = this; });
+    var byTarget = {};
+    edgeD.labels.forEach(function (label) {
+      var pieces = label.split('→');
+      if (byTarget[pieces[1]] == undefined) {
+        byTarget[pieces[1]] = [];
+      }
+      byTarget[pieces[1]].push(pieces[0]);
+    });
+
+    var edgeLabels = [];
+    Object.keys(byTarget).forEach(function (key) {
+      if (edgeD.source == edgeD.target && key.length == 1) {
+        edgeLabels.push(key);
+      } else {
+        edgeLabels.push(byTarget[key].join(',') + '→' + key);
+      }
+    });
 
     var labels = group.selectAll('.edgelabel')
-      .data(edgeD.labels).enter()
+      .data(edgeLabels).enter()
       .append('text')
         .attr('class', 'edgelabel');
     labels.append('textPath')
