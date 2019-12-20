@@ -8,11 +8,16 @@
  *   Returning null/undefined halts the machine (no transition defined).
  * @param {state} startState  The state to start in.
  * @param         tape        The tape to use.
+ * @param {int} startPosition The index to start in
  */
-function TuringMachine(transition, startState, tape) {
+function TuringMachine(transition, startState, tape, startPosition) {
   this.transition = transition;
   this.state = startState;
   this.tape = tape;
+  this.startPosition = startPosition;
+  for (var i = 0; i < startPosition; i++) {
+    this.tape.headRight();
+  }
 }
 
 TuringMachine.prototype.toString = function () {

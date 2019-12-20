@@ -1,8 +1,8 @@
 'use strict';
 
 var TM = require('./TuringMachine'),
-  jsyaml = require('js-yaml'),
-  _ = require('lodash');
+    jsyaml = require('js-yaml'),
+    _ = require('lodash');
 
 /**
  * Thrown when parsing a string that is valid as YAML but invalid
@@ -86,6 +86,10 @@ function parseSpec(str) {
   obj.blank = String(obj.blank);
   if (obj.blank.length !== 1) {
     throw new TMSpecError('The blank symbol must be a string of length 1', detailsForBlank);
+  }
+  obj.startIndex = obj['start index'];
+  if (obj.startIndex == null) {
+    obj.startIndex = 0;
   }
   obj.startState = obj['start state'];
   delete obj['start state'];
