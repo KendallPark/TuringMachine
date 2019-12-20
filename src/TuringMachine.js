@@ -32,7 +32,7 @@ TuringMachine.prototype.toString = function () {
 TuringMachine.prototype.step = function () {
   var instruct = this.nextInstruction;
   if (instruct == null) { return false; }
-
+  console.log(this.tape.tape.toString() + '   ' + this.state + '   ' + this.tape.read() + ' → ' + '(' + instruct.symbol + ',' + instruct.move  + ')' );
   this.tape.write(instruct.symbol);
   move(this.tape, instruct.move);
   this.state = instruct.state;
