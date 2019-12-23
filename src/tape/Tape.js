@@ -18,6 +18,11 @@ var _ = require('lodash/fp');
 
 function toUnicodeVariant(str, variant, flags) {
 
+  if (str === 'θ') {
+    str = 'O';
+  } else if (str === 'Ι') {
+    str = 'I';
+  }
   var offsets = {
     m: [0x1d670, 0x1d7f6],
     b: [0x1d400, 0x1d7ce],

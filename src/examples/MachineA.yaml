@@ -1,15 +1,16 @@
 name: Machine A (binary counter)
 source code: |
-  input: '1'
-  blank: '0'
+  input: 'θθθθΙ'
+  blank: 'θ'
   start state: q0
+  start index: 4
   table:
     q0:
-      '0': {write: 0, R}
-      '1': {write: 1, L: q1}
+      'θ': {write: θ, R}
+      'Ι': {write: Ι, L: q1}
     q1:
-      '0': {write: 1, R: q0}
-      '1': {write: 0, L}
+      'θ': {write: Ι, R: q0}
+      'Ι': {write: θ, L}
 positions:
   q0: {x: 300, y: 250}
   q1: {x: 500, y: 250}
